@@ -1,4 +1,4 @@
-module github.com/xoronedge/gqlgen-todos
+module github.com/xoronedge/gqlgen-tuto
 
 go 1.15
 

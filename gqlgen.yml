@@ -1,6 +1,6 @@
 # Where are all the schema files located? globs are supported eg  src/**/*.graphqls
 schema:
-  - graph/*.graphql
+  - graph/*.graphqls
 
 # Where should the generated server code go?
 exec:
@@ -16,11 +16,7 @@ exec:
 model:
   filename: graph/model/models_gen.go
   package: model
-models:
-  User:
-    model: github.com/xoronedge/gqlgen-todos/graph/models.User
-  Meetup:
-    model: github.com/xoronedge/gqlgen-todos/graph/models.Meetup
+
 # Where should the resolver implementations go?
 resolver:
   layout: follow-schema
@@ -39,7 +35,7 @@ resolver:
 # gqlgen will search for any type names in the schema in these go packages
 # if they match it will use them, otherwise it will generate them.
 autobind:
-  - "github.com/xoronedge/gqlgen-todos/graph/model"
+  - "github.com/xoronedge/gqlgen-tuto/graph/model"
 
 # This section declares type mapping between the GraphQL and go type systems
 #
@@ -58,3 +54,13 @@ models:
       - github.com/99designs/gqlgen/graphql.Int
       - github.com/99designs/gqlgen/graphql.Int64
       - github.com/99designs/gqlgen/graphql.Int32
+  User:
+    model: github.com/xoronedge/gqlgen-tuto/graph/models.User
+    fields:
+      meetups:
+        resolver: true
+  Meetup:
+    model: github.com/xoronedge/gqlgen-tuto/graph/models.Meetup
+    fields:
+      user:
+        resolver: true
